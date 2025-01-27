@@ -35,3 +35,90 @@
       />
     </div>
 </div>
+<div class="flex justify-center mt-4">
+    <button class="bg-blue-500 text-white p-2 rounded-md">Registrar nuevo huésped</button>
+</div>
+<div class="mt-8 rounded-2xl" style="background: rgb(146 151 179 / 13%)">
+    <div class="container mx-auto">
+      <div class="py-8">
+        <div class="py-4">
+          <div class="max-w-full overflow-x-auto rounded-lg">
+            <table class="w-full leading-normal text-white">
+              <thead>
+                <tr>
+                  <th class="border-b border-gray-200 px-5 py-3 text-left text-sm font-normal uppercase">
+                    Nombre
+                  </th>
+                  <th class="border-b border-gray-200 px-5 py-3 text-left text-sm font-normal uppercase">
+                    Apellido
+                  </th>
+                  <th class="border-b border-gray-200 px-5 py-3 text-left text-sm font-normal uppercase">
+                    DNI/Pasaporte
+                  </th>
+                  <th class="border-b border-gray-200 px-5 py-3 text-left text-sm font-normal uppercase">
+                    Check-in
+                  </th>
+                  <th class="border-b border-gray-200 px-5 py-3 text-left text-sm font-normal uppercase">
+                    Check-out
+                  </th>
+                  <th class="border-b border-gray-200 px-5 py-3 text-left text-sm font-normal uppercase">
+                    Acciones
+                  </th>
+                </tr>
+              </thead>
+              <tbody *ngIf="huespedes.length > 0; else noData" class="text-white">
+                <tr *ngFor="let huesped of huespedes">
+                  <td class="border-b border-gray-200 p-5 text-sm">
+                    <p class="whitespace-nowrap">{{ huesped.nombre }}</p>
+                  </td>
+                  <td class="border-b border-gray-200 p-5 text-sm">
+                    <p class="whitespace-nowrap">{{ huesped.apellido }}</p>
+                  </td>
+                  <td class="border-b border-gray-200 p-5 text-sm">
+                    <p class="whitespace-nowrap">{{ huesped.dniPasaporte }}</p>
+                  </td>
+                  <td class="border-b border-gray-200 p-5 text-sm">
+                    <p class="whitespace-nowrap">{{ huesped.fechaCheckIn | date:'dd/MM/yyyy' }}</p>
+                  </td>
+                  <td class="border-b border-gray-200 p-5 text-sm">
+                    <p class="whitespace-nowrap">{{ huesped.fechaCheckOut | date:'dd/MM/yyyy' }}</p>
+                  </td>
+                  <td class="border-b border-gray-200 p-5 text-sm flex gap-2">
+                    <!-- Botón de eliminar -->
+                    <button (click)="eliminarHuesped(huesped.idHuesped)" class="bg-red-500 text-white p-2 rounded-md">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                    <!-- Botón de editar -->
+                    <button class="bg-blue-500 text-white p-2 rounded-md">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20h9m-9 0a3 3 0 01-3-3V8a3 3 0 013-3m0 0h3m-3 0a3 3 0 00-3 3v9a3 3 0 003 3m0 0h3m-3 0a3 3 0 01-3-3V8a3 3 0 013-3m0 0h3" />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <ng-template #noData>
+              <p class="text-center text-white p-5">No hay huéspedes disponibles.</p>
+            </ng-template>
+          </div>
+  
+          <!-- Controles de Paginación -->
+          <div class="flex justify-center mt-4">
+            <button (click)="irAPagina(currentPage - 1)" [disabled]="currentPage === 0" class="bg-blue-500 text-white p-2 rounded-md">
+              Anterior
+            </button>
+            <span class="mx-2 text-white">
+              Página {{ currentPage + 1 }} de {{ totalPages }}
+            </span>
+            <button (click)="irAPagina(currentPage + 1)" [disabled]="currentPage === totalPages - 1" class="bg-blue-500 text-white p-2 rounded-md">
+              Siguiente
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

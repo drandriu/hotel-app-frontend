@@ -42,6 +42,8 @@ import { ContentComponent } from './components/content/content.component';
 import { SnippetComponent } from './components/docs/snippet/snippet.component';
 import { FolderIconComponent } from './components/docs/icons/folder-icon/folder-icon.component';
 import { AngularIconComponent } from './components/docs/icons/angular-icon/angular-icon.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HuespedService } from './services/huesped.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,8 +87,8 @@ import { AngularIconComponent } from './components/docs/icons/angular-icon/angul
     FolderIconComponent,
     AngularIconComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [HuespedService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

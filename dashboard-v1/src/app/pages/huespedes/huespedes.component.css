@@ -1,0 +1,22 @@
+.btn-register {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4CAF50; /* Verde atractivo */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 10px 0; /* Añadido margen para separación */
+}
+
+.btn-register:hover {
+    background-color: #45a049; /* Verde un poco más oscuro al hacer hover */
+    transform: scale(1.05); /* Ligera animación para resaltar */
+}
+
+.btn-register:focus {
+    outline: none; /* Elimina el borde azul del foco */
+    box-shadow: 0 0 5px rgba(72, 187, 120, 0.8); /* Sombra verde al enfocar */
+}
