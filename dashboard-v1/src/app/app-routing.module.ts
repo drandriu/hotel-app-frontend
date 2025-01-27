@@ -10,6 +10,8 @@ import { HotelesComponent } from './pages/hoteles/hoteles.component';
 import { ServiciosComponent } from './pages/servicios/servicios.component';
 import { DocumentationComponent } from './pages/zzzz2/documentation.component';
 import { HabitacionesComponent } from './pages/habitaciones/habitaciones.component';
+import { RegistroHuespedComponent } from './pages/huespedes/registro-huesped/registro-huesped.component';
+import { EditarHuespedComponent } from './pages/huespedes/editar-huesped/editar-huesped.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: 'admin/hoteles', component: HotelesComponent },
   { path: 'admin/servicios', component: ServiciosComponent },
   { path: 'admin/habitaciones', component: HabitacionesComponent },
+  {path: 'admin/huespedes/registro', component: RegistroHuespedComponent},
+  { path: 'admin/huespedes/editar/:id', component: EditarHuespedComponent }, // Ruta para editar
 ];
 
 @NgModule({

@@ -36,7 +36,8 @@
     </div>
 </div>
 <div class="flex justify-center mt-4">
-    <button class="bg-blue-500 text-white p-2 rounded-md">Registrar nuevo huésped</button>
+    <button class="bg-blue-500 text-white p-2 rounded-md"
+    [routerLink]="['/admin/huespedes/registro']">Registrar nuevo huésped</button>
 </div>
 <div class="mt-8 rounded-2xl" style="background: rgb(146 151 179 / 13%)">
     <div class="container mx-auto">
@@ -91,7 +92,8 @@
                       </svg>
                     </button>
                     <!-- Botón de editar -->
-                    <button class="bg-blue-500 text-white p-2 rounded-md">
+                    <button class="bg-blue-500 text-white p-2 rounded-md"
+                    [routerLink]="['/admin/huespedes/editar', huesped.idHuesped]">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20h9m-9 0a3 3 0 01-3-3V8a3 3 0 013-3m0 0h3m-3 0a3 3 0 00-3 3v9a3 3 0 003 3m0 0h3m-3 0a3 3 0 01-3-3V8a3 3 0 013-3m0 0h3" />
                       </svg>

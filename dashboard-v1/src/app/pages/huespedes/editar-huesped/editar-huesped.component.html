@@ -1,0 +1,77 @@
+<div>
+    <div
+      class="flex w-full flex-wrap items-center justify-between rounded-2xl px-12 py-6 md:flex-nowrap"
+      style="
+        background-color: url('https://www.transparenttextures.com/patterns/cubes.png');
+        background-image: linear-gradient(
+          to right top,
+          #cf4af3,
+          #e73bd7,
+          #f631bc,
+          #fd31a2,
+          #ff3a8b,
+          #ff4b78,
+          #ff5e68,
+          #ff705c,
+          #ff8c51,
+          #ffaa49,
+          #ffc848,
+          #ffe652
+        );
+      "
+    >
+      <div>
+        <h3 class="m-0 flex items-center text-lg font-medium">
+            Editar huésped
+        </h3>
+        <div class="my-4 overflow-hidden text-sm font-normal text-white">
+            Editando el huésped con id -> {{ huesped.idHuesped }}
+        </div>
+      </div>
+      <img
+        class="w-24 object-cover object-center md:w-44"
+        src="assets/images/hotelIcono.png"
+        alt=""
+      />
+      
+    </div>
+    <div class="mt-6"></div>
+</div>  
+  <form (ngSubmit)="editarHuesped()">
+    <div class="grid grid-cols-2 gap-4">
+      <!-- Aquí van los campos del formulario similares al de registro -->
+      <div>
+        <label for="nombre" class="block">Nombre</label>
+        <input id="nombre" type="text" [(ngModel)]="huesped.nombre" name="nombre" class="w-full p-2 rounded-md bg-gray-700" required />
+      </div>
+      <div>
+        <label for="apellido" class="block">Apellido</label>
+        <input id="apellido" type="text" [(ngModel)]="huesped.apellido" name="apellido" class="w-full p-2 rounded-md bg-gray-700" required />
+      </div>
+      <div>
+        <label for="dniPasaporte" class="block">DNI/Pasaporte</label>
+        <input id="dniPasaporte" type="text" [(ngModel)]="huesped.dniPasaporte" name="dniPasaporte" class="w-full p-2 rounded-md bg-gray-700" required />
+      </div>
+      <div>
+        <label for="fechaCheckIn" class="block">Check-in</label>
+        <input id="fechaCheckIn" type="date" [(ngModel)]="huesped.fechaCheckIn" name="fechaCheckIn" class="w-full p-2 rounded-md bg-gray-700" required />
+      </div>
+      <div>
+        <label for="fechaCheckOut" class="block">Check-out</label>
+        <input id="fechaCheckOut" type="date" [(ngModel)]="huesped.fechaCheckOut" name="fechaCheckOut" class="w-full p-2 rounded-md bg-gray-700" required />
+      </div>
+      <div>
+        <label for="habitacion" class="block">Habitación</label>
+        <input id="habitacion" type="text" [(ngModel)]="huesped.idHabitacion" name="habitacion" class="w-full p-2 rounded-md bg-gray-700" required />
+      </div>
+    </div>
+    <div class="mt-6 flex justify-center space-x-4">
+      <button class="bg-red-500 text-white p-2 rounded-md" [routerLink]="['/admin/huespedes']">
+        Volver
+      </button>
+      <button type="submit" class="bg-blue-500 text-white p-2 rounded-md">
+        Editar
+      </button>
+    </div>
+  </form>
+  

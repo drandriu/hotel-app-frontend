@@ -35,6 +35,7 @@ export class HuespedesComponent implements OnInit {
 
   // Llamada a la función de eliminación
   eliminarHuesped(id: number): void {
+
     this.huespedService.eliminarHuesped(id).subscribe({
       next: () => {
         // Eliminar el huesped de la lista localmente después de la eliminación en el backend

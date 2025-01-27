@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Huesped } from '../models/huesped.model';
+import { DynamicSearchDTO } from '../models/DynamicSearchDTO';
 
 export interface PaginatedResponse<T> {
   content: T[];
@@ -28,4 +29,31 @@ export class HuespedService {
    eliminarHuesped(id: number): Observable<void> {
         return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+  registrarHuesped(huesped: Huesped): Observable<Huesped> {
+    return this.http.post<Huesped>(this.apiUrl, huesped);
+  }
+
+  editarHuesped(huesped: Huesped): Observable<Huesped> {
+    return this.http.put<Huesped>(`${this.apiUrl}/${huesped.idHuesped}`, huesped);
+  }
+
+  // Obtener un huésped por su ID usando búsqueda dinámica
+  obtenerHuespedPorIdDinamico(id: string): Observable<Huesped> {
+    const searchRequest: DynamicSearchDTO = {
+      listSearchCriteria: [
+        { key: 'idHuesped', value: id, operation: 'equals' }
+      ],
+      listOrderCriteria: [],
+      page: {
+        pageIndex: 0,
+        pageSize: 1
+      }
+    };
+
+    return this.http.post<PaginatedResponse<Huesped>>(`${this.apiUrl}/buscar`, searchRequest).pipe(
+      map(response => response.content[0])  // Obtener el primer (y único) resultado
+    );
+  }
+
+
 }

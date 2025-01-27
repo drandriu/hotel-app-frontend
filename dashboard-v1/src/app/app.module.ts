@@ -44,6 +44,11 @@ import { FolderIconComponent } from './components/docs/icons/folder-icon/folder-
 import { AngularIconComponent } from './components/docs/icons/angular-icon/angular-icon.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HuespedService } from './services/huesped.service';
+import { FormsModule } from '@angular/forms';
+import { RegistroHuespedComponent } from './pages/huespedes/registro-huesped/registro-huesped.component';
+import { EditarHuespedComponent } from './pages/huespedes/editar-huesped/editar-huesped.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,8 +91,10 @@ import { HuespedService } from './services/huesped.service';
     ContentComponent,
     FolderIconComponent,
     AngularIconComponent,
+    RegistroHuespedComponent,
+    EditarHuespedComponent, 
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [HuespedService],
   bootstrap: [AppComponent],
 })
