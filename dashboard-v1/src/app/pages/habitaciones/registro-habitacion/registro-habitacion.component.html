@@ -1,0 +1,59 @@
+<div>
+    <div
+      class="flex w-full flex-wrap items-center justify-between rounded-2xl px-12 py-6 md:flex-nowrap"
+      style="
+        background-color: url('https://www.transparenttextures.com/patterns/cubes.png');
+        background-image: linear-gradient(
+          to right top,
+          #66bb6a,
+          #43a047,
+          #388e3c,
+          #2c6e2f,
+          #1b5e20
+        );
+      "
+    >
+      <div>
+        <h3 class="m-0 flex items-center text-lg font-medium text-white">
+          Nuevo Registro de Habitación
+        </h3>
+        <div class="my-4 overflow-hidden text-sm font-normal text-white">
+          Complete el formulario para registrar una nueva habitación.
+        </div>
+      </div>
+      <img class="w-24 object-cover object-center md:w-44" src="assets/images/hotelIcono.png" alt="" />
+    </div>
+  </div>
+  
+  <!-- Formulario de Registro -->
+  <div class="mt-8 rounded-2xl p-6 bg-gray-800 text-white">
+    <form (ngSubmit)="registrarHabitacion()">
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label for="numeroHabitacion" class="block">Número de Habitación</label>
+          <input id="numeroHabitacion" type="number" [(ngModel)]="habitacion.numeroHabitacion" name="numeroHabitacion" class="w-full p-2 rounded-md bg-gray-700" required />
+        </div>
+        <div>
+          <label for="tipo" class="block">Tipo</label>
+          <input id="tipo" type="text" [(ngModel)]="habitacion.tipo" name="tipo" class="w-full p-2 rounded-md bg-gray-700" required />
+        </div>
+        <div>
+          <label for="precioNoche" class="block">Precio por Noche</label>
+          <input id="precioNoche" type="number" [(ngModel)]="habitacion.precioNoche" name="precioNoche" class="w-full p-2 rounded-md bg-gray-700" required />
+        </div>
+        <div>
+          <label for="idHotel" class="block">id Hotel</label>
+          <input id="idHotel" type="number" [(ngModel)]="habitacion.idHotel" name="idHotel" class="w-full p-2 rounded-md bg-gray-700" required />
+        </div>
+      </div>
+      <div class="mt-6 flex justify-center space-x-4">
+        <button class="bg-red-500 text-white p-2 rounded-md" [routerLink]="['/admin/habitaciones']">
+          Volver
+        </button>
+        <button type="submit" class="bg-blue-500 text-white p-2 rounded-md">
+          Registrar
+        </button>
+      </div>
+    </form>
+  </div>
+  

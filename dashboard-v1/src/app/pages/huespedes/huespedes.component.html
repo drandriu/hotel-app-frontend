@@ -36,8 +36,76 @@
     </div>
 </div>
 <div class="flex justify-center mt-4">
-    <button class="bg-blue-500 text-white p-2 rounded-md"
+    <button class="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white p-2 rounded-md"
     [routerLink]="['/admin/huespedes/registro']">Registrar nuevo huésped</button>
+</div>
+<!-- Filtros de búsqueda -->
+<div class="mt-4">
+  <div class="flex gap-4">
+    <div>
+      <label for="filterNombre" class="block text-sm text-white">Nombre</label>
+      <input
+        id="filterNombre"
+        type="text"
+        [(ngModel)]="filters.nombre"
+        name="nombre"
+        class="p-2 rounded-md bg-gray-700 text-white"
+        placeholder="Buscar por nombre"
+      />
+    </div>
+    <div>
+      <label for="filterDireccion" class="block text-sm text-white">Apellido</label>
+      <input
+        id="filterDireccion"
+        type="text"
+        [(ngModel)]="filters.apellido"
+        name="direccion"
+        class="p-2 rounded-md bg-gray-700 text-white"
+        placeholder="Buscar por apellido"
+      />
+    </div>
+    <div>
+      <label for="filterDireccion" class="block text-sm text-white">Dni/Pasaporte</label>
+      <input
+        id="filterDireccion"
+        type="text"
+        [(ngModel)]="filters.dniPasaporte"
+        name="direccion"
+        class="p-2 rounded-md bg-gray-700 text-white"
+        placeholder="Buscar por dni/pasaporte"
+      />
+    </div>
+    <div>
+      <label for="filterDireccion" class="block text-sm text-white">Fecha CheckIn</label>
+      <input
+        id="filterDireccion"
+        type="date"
+        [(ngModel)]="filters.fechaCheckIn"
+        name="direccion"
+        class="p-2 rounded-md bg-gray-700 text-white"
+        placeholder="Buscar por checkIn"
+      />
+    </div>
+    <div>
+      <label for="filterDireccion" class="block text-sm text-white">Fecha CheckOut</label>
+      <input
+        id="filterDireccion"
+        type="date"
+        [(ngModel)]="filters.fechaCheckOut"
+        name="direccion"
+        class="p-2 rounded-md bg-gray-700 text-white"
+        placeholder="Buscar por fechaOut"
+      />
+    </div>
+    <div class="flex items-end">
+      <button
+        (click)="buscarHuespedes()"
+        class="bg-blue-500 text-white p-2 rounded-md"
+      >
+        Buscar
+      </button>
+    </div>
+  </div>
 </div>
 <div class="mt-8 rounded-2xl" style="background: rgb(146 151 179 / 13%)">
     <div class="container mx-auto">
@@ -109,13 +177,13 @@
   
           <!-- Controles de Paginación -->
           <div class="flex justify-center mt-4">
-            <button (click)="irAPagina(currentPage - 1)" [disabled]="currentPage === 0" class="bg-blue-500 text-white p-2 rounded-md">
+            <button (click)="irAPagina(currentPage - 1)" [disabled]="currentPage === 0" class="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white p-2 rounded-md">
               Anterior
             </button>
             <span class="mx-2 text-white">
               Página {{ currentPage + 1 }} de {{ totalPages }}
             </span>
-            <button (click)="irAPagina(currentPage + 1)" [disabled]="currentPage === totalPages - 1" class="bg-blue-500 text-white p-2 rounded-md">
+            <button (click)="irAPagina(currentPage + 1)" [disabled]="currentPage === totalPages - 1" class="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white p-2 rounded-md">
               Siguiente
             </button>
           </div>

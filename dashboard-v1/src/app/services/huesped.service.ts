@@ -55,5 +55,10 @@ export class HuespedService {
     );
   }
 
+  // Método para buscar huéspedes con filtros dinámicos
+  buscarHuespedes(searchRequest: DynamicSearchDTO): Observable<PaginatedResponse<Huesped>> {
+    return this.http.post<PaginatedResponse<Huesped>>(`${this.apiUrl}/buscar`, searchRequest);
+  }
+
 
 }

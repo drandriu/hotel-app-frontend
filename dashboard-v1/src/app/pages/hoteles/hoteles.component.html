@@ -1,37 +1,200 @@
 <div>
-    <div
-      class="flex w-full flex-wrap items-center justify-between rounded-2xl px-12 py-6 md:flex-nowrap"
-      style="
-        background-color: url('https://www.transparenttextures.com/patterns/cubes.png');
-        background-image: linear-gradient(
-          to right top,
-          #cf4af3,
-          #e73bd7,
-          #f631bc,
-          #fd31a2,
-          #ff3a8b,
-          #ff4b78,
-          #ff5e68,
-          #ff705c,
-          #ff8c51,
-          #ffaa49,
-          #ffc848,
-          #ffe652
-        );
-      "
-    >
-      <div>
-        <h3 class="m-0 flex items-center text-lg font-medium">
-          Hoteles
-        </h3>
-        <div class="my-4 overflow-hidden text-sm font-normal text-white">
-          Gestión de hoteles.
-        </div>
+  <div
+    class="flex w-full flex-wrap items-center justify-between rounded-2xl px-12 py-6 md:flex-nowrap"
+    style="
+      background-color: url('https://www.transparenttextures.com/patterns/cubes.png');
+      background-image: linear-gradient(
+        to right top,
+        #42a5f5,
+        #1e88e5,
+        #1565c0,
+        #0d47a1,
+        #002171
+      );
+    "
+  >
+    <div>
+      <h3 class="m-0 flex items-center text-lg font-medium">
+        Hoteles
+      </h3>
+      <div class="my-4 overflow-hidden text-sm font-normal text-white">
+        Gestión de hoteles.
       </div>
-      <img
-        class="w-24 object-cover object-center md:w-44"
-        src="assets/images/hotelIcono.png"
-        alt=""
+    </div>
+    <img
+      class="w-24 object-cover object-center md:w-44"
+      src="assets/images/hotelIcono.png"
+      alt="Icono de hotel"
+    />
+  </div>
+</div>
+<div class="flex justify-center mt-4">
+  <button
+    class="bg-blue-500 text-white p-2 rounded-md"
+    [routerLink]="['/admin/hoteles/registro']"
+  >
+    Registrar nuevo hotel
+  </button>
+</div>
+<!-- Filtros de búsqueda -->
+<div class="mt-4">
+  <div class="flex gap-4">
+    <div>
+      <label for="filterId" class="block text-sm text-white">ID</label>
+      <input
+        id="filterId"
+        type="text"
+        [(ngModel)]="filters.id"
+        name="id"
+        class="p-2 rounded-md bg-gray-700 text-white"
+        placeholder="Buscar por ID"
       />
     </div>
+    <div>
+      <label for="filterNombre" class="block text-sm text-white">Nombre</label>
+      <input
+        id="filterNombre"
+        type="text"
+        [(ngModel)]="filters.nombre"
+        name="nombre"
+        class="p-2 rounded-md bg-gray-700 text-white"
+        placeholder="Buscar por nombre"
+      />
+    </div>
+    <div>
+      <label for="filterDireccion" class="block text-sm text-white">Dirección</label>
+      <input
+        id="filterDireccion"
+        type="text"
+        [(ngModel)]="filters.direccion"
+        name="direccion"
+        class="p-2 rounded-md bg-gray-700 text-white"
+        placeholder="Buscar por dirección"
+      />
+    </div>
+    <div>
+      <label for="filterTelefono" class="block text-sm text-white">Teléfono</label>
+      <input
+        id="filterTelefono"
+        type="text"
+        [(ngModel)]="filters.telefono"
+        name="telefono"
+        class="p-2 rounded-md bg-gray-700 text-white"
+        placeholder="Buscar por teléfono"
+      />
+    </div>
+    <div>
+      <label for="filterEmail" class="block text-sm text-white">Email</label>
+      <input
+        id="filterEmail"
+        type="text"
+        [(ngModel)]="filters.email"
+        name="email"
+        class="p-2 rounded-md bg-gray-700 text-white"
+        placeholder="Buscar por email"
+      />
+    </div>
+    <div class="flex items-end">
+      <button
+        (click)="buscarHoteles()"
+        class="bg-blue-500 text-white p-2 rounded-md"
+      >
+        Buscar
+      </button>
+    </div>
+  </div>
+</div>
+<div class="mt-8 rounded-2xl" style="background: rgb(146 151 179 / 13%)">
+  <div class="container mx-auto">
+    <div class="py-8">
+      <div class="py-4">
+        <div class="max-w-full overflow-x-auto rounded-lg">
+          <table class="w-full leading-normal text-white">
+            <thead>
+              <tr>
+                <th class="border-b border-gray-200 px-5 py-3 text-left text-sm font-normal uppercase">
+                  ID
+                </th>
+                <th class="border-b border-gray-200 px-5 py-3 text-left text-sm font-normal uppercase">
+                  Nombre
+                </th>
+                <th class="border-b border-gray-200 px-5 py-3 text-left text-sm font-normal uppercase">
+                  Dirección
+                </th>
+                <th class="border-b border-gray-200 px-5 py-3 text-left text-sm font-normal uppercase">
+                  Teléfono
+                </th>
+                <th class="border-b border-gray-200 px-5 py-3 text-left text-sm font-normal uppercase">
+                  Email
+                </th>
+                <th class="border-b border-gray-200 px-5 py-3 text-left text-sm font-normal uppercase">
+                  Acciones
+                </th>
+              </tr>
+            </thead>
+            <tbody *ngIf="hoteles.length > 0; else noData" class="text-white">
+              <tr *ngFor="let hotel of hoteles">
+                <td class="border-b border-gray-200 p-5 text-sm">
+                  <p class="whitespace-nowrap">{{ hotel.id }}</p>
+                </td>
+                <td class="border-b border-gray-200 p-5 text-sm">
+                  <p class="whitespace-nowrap">{{ hotel.nombre }}</p>
+                </td>
+                <td class="border-b border-gray-200 p-5 text-sm">
+                  <p class="whitespace-nowrap">{{ hotel.direccion }}</p>
+                </td>
+                <td class="border-b border-gray-200 p-5 text-sm">
+                  <p class="whitespace-nowrap">{{ hotel.telefono }}</p>
+                </td>
+                <td class="border-b border-gray-200 p-5 text-sm">
+                  <p class="whitespace-nowrap">{{ hotel.email }}</p>
+                </td>
+                <td class="border-b border-gray-200 p-5 text-sm flex gap-2">
+                  <button
+                    (click)="eliminarHotel(hotel.id)"
+                    class="bg-red-500 text-white p-2 rounded-md"
+                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                  </button>
+                  <button
+                    class="bg-blue-500 text-white p-2 rounded-md"
+                    [routerLink]="['/admin/hoteles/editar', hotel.id]"
+                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20h9m-9 0a3 3 0 01-3-3V8a3 3 0 013-3m0 0h3m-3 0a3 3 0 00-3 3v9a3 3 0 003 3m0 0h3m-3 0a3 3 0 01-3-3V8a3 3 0 013-3m0 0h3" />
+                  </svg>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <ng-template #noData>
+            <p class="text-center text-white p-5">No hay hoteles disponibles.</p>
+          </ng-template>
+        </div>
+
+        <div class="flex justify-center mt-4">
+          <button
+            (click)="irAPagina(currentPage - 1)"
+            [disabled]="currentPage === 0"
+            class="bg-blue-500 text-white p-2 rounded-md"
+          >
+            Anterior
+          </button>
+          <span class="mx-2 text-white">
+            Página {{ currentPage + 1 }} de {{ totalPages }}
+          </span>
+          <button
+            (click)="irAPagina(currentPage + 1)"
+            [disabled]="currentPage === totalPages - 1"
+            class="bg-blue-500 text-white p-2 rounded-md"
+          >
+            Siguiente
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -12,6 +12,13 @@ import { DocumentationComponent } from './pages/zzzz2/documentation.component';
 import { HabitacionesComponent } from './pages/habitaciones/habitaciones.component';
 import { RegistroHuespedComponent } from './pages/huespedes/registro-huesped/registro-huesped.component';
 import { EditarHuespedComponent } from './pages/huespedes/editar-huesped/editar-huesped.component';
+import { RegistroHotelComponent } from './pages/hoteles/registro-hotel/registro-hotel.component';
+import { EditarHotelComponent } from './pages/hoteles/editar-hotel/editar-hotel.component';
+import { RegistroServicioComponent } from './pages/servicios/registro-servicio/registro-servicio.component';
+import { EditarServicioComponent } from './pages/servicios/editar-servicio/editar-servicio.component';
+import { AsignarServicioComponent } from './pages/servicios/asignar-servicio/asignar-servicio.component';
+import { RegistroHabitacionComponent } from './pages/habitaciones/registro-habitacion/registro-habitacion.component';
+import { EditarHabitacionComponent } from './pages/habitaciones/editar-habitacion/editar-habitacion.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +28,14 @@ const routes: Routes = [
   { path: 'admin/habitaciones', component: HabitacionesComponent },
   {path: 'admin/huespedes/registro', component: RegistroHuespedComponent},
   { path: 'admin/huespedes/editar/:id', component: EditarHuespedComponent }, // Ruta para editar
+  { path: 'admin/hoteles/registro', component: RegistroHotelComponent},
+  { path: 'admin/hoteles/editar/:id', component: EditarHotelComponent },
+  { path: 'admin/servicios/registro', component: RegistroServicioComponent },
+  { path: 'admin/servicios/editar/:id',component: EditarServicioComponent },
+  {path: 'admin/servicios/asignar', component: AsignarServicioComponent},
+  { path: 'admin/habitaciones/registro', component: RegistroHabitacionComponent },
+  { path: 'admin/habitaciones/editar/:id', component: EditarHabitacionComponent }
+  
 ];
 
 @NgModule({

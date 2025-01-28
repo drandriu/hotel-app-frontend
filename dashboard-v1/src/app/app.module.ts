@@ -47,6 +47,13 @@ import { HuespedService } from './services/huesped.service';
 import { FormsModule } from '@angular/forms';
 import { RegistroHuespedComponent } from './pages/huespedes/registro-huesped/registro-huesped.component';
 import { EditarHuespedComponent } from './pages/huespedes/editar-huesped/editar-huesped.component';
+import { RegistroHotelComponent } from './pages/hoteles/registro-hotel/registro-hotel.component';
+import { EditarHotelComponent } from './pages/hoteles/editar-hotel/editar-hotel.component';
+import { RegistroServicioComponent } from './pages/servicios/registro-servicio/registro-servicio.component';
+import { EditarServicioComponent } from './pages/servicios/editar-servicio/editar-servicio.component';
+import { AsignarServicioComponent } from './pages/servicios/asignar-servicio/asignar-servicio.component';
+import { RegistroHabitacionComponent } from './pages/habitaciones/registro-habitacion/registro-habitacion.component';
+import { EditarHabitacionComponent } from './pages/habitaciones/editar-habitacion/editar-habitacion.component';
 
 
 @NgModule({
@@ -93,6 +100,12 @@ import { EditarHuespedComponent } from './pages/huespedes/editar-huesped/editar-
     AngularIconComponent,
     RegistroHuespedComponent,
     EditarHuespedComponent, 
+    HotelesComponent, RegistroHotelComponent, EditarHotelComponent, ServiciosComponent, RegistroServicioComponent,
+    RegistroServicioComponent,
+    EditarServicioComponent,
+    AsignarServicioComponent,
+    RegistroHabitacionComponent,
+    EditarHabitacionComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [HuespedService],
