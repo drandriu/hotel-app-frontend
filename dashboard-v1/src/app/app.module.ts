@@ -42,7 +42,7 @@ import { ContentComponent } from './components/content/content.component';
 import { SnippetComponent } from './components/docs/snippet/snippet.component';
 import { FolderIconComponent } from './components/docs/icons/folder-icon/folder-icon.component';
 import { AngularIconComponent } from './components/docs/icons/angular-icon/angular-icon.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HuespedService } from './services/huesped.service';
 import { FormsModule } from '@angular/forms';
 import { RegistroHuespedComponent } from './pages/huespedes/registro-huesped/registro-huesped.component';
@@ -54,6 +54,8 @@ import { EditarServicioComponent } from './pages/servicios/editar-servicio/edita
 import { AsignarServicioComponent } from './pages/servicios/asignar-servicio/asignar-servicio.component';
 import { RegistroHabitacionComponent } from './pages/habitaciones/registro-habitacion/registro-habitacion.component';
 import { EditarHabitacionComponent } from './pages/habitaciones/editar-habitacion/editar-habitacion.component';
+import { LoginComponent } from './pages/login/login/login.component';
+import { AuthInterceptor } from './services/auth.interceptor';
 
 
 @NgModule({
@@ -105,10 +107,15 @@ import { EditarHabitacionComponent } from './pages/habitaciones/editar-habitacio
     EditarServicioComponent,
     AsignarServicioComponent,
     RegistroHabitacionComponent,
-    EditarHabitacionComponent
+    EditarHabitacionComponent,
+    LoginComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [HuespedService],
+  providers: [HuespedService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true  // Permite tener múltiples interceptores si fuera necesario
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

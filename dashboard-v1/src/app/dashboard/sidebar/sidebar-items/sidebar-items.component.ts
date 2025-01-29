@@ -6,4 +6,9 @@ import { Component } from '@angular/core';
 })
 export class SidebarItemsComponent {
 
+  usuarioAutenticado: boolean = false;
+
+  ngOnInit() {
+    this.usuarioAutenticado = !!localStorage.getItem('username'); // Verifica si hay un usuario autenticado
+      }
 }

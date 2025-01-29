@@ -1,18 +1,41 @@
 <div>
   <sidebar-item-section name="Entidades">
-    <sidebar-item title="Hoteles" routerLink="/admin/hoteles">
-      <img class="mr-4 h-7 w-7 rounded" src="assets/images/hotelIcono.png" alt="Icono de hotel"  style="filter: brightness(0) invert(1);"/>
+    <sidebar-item title="Inicio de sesion" routerLink="/">
+      <img class="mr-4 h-7 w-7 rounded" src="assets/images/avatar.png" alt="Icono de hotel" style="filter: brightness(0) invert(1);"/>
     </sidebar-item>
-    <sidebar-item title="Habitaciones" routerLink="/admin/habitaciones">
-      <img class="mr-4 h-7 w-7 rounded" src="assets/images/habitacion.png" alt="Icono de hotel"  style="filter: brightness(0) invert(1);"/>
 
+    <!-- Si el usuario está autenticado, se muestra normalmente -->
+    <sidebar-item *ngIf="usuarioAutenticado" title="Hoteles" routerLink="/admin/hoteles">
+      <img class="mr-4 h-7 w-7 rounded" src="assets/images/hotelIcono.png" alt="Icono de hotel" style="filter: brightness(0) invert(1);"/>
     </sidebar-item>
-    <sidebar-item title="Huéspedes" routerLink="/admin/huespedes">
-      <img class="mr-4 h-7 w-7 rounded" src="assets/images/huesped.png" alt="Icono de hotel"  style="filter: brightness(0) invert(1);"/>
+
+    <sidebar-item *ngIf="usuarioAutenticado" title="Habitaciones" routerLink="/admin/habitaciones">
+      <img class="mr-4 h-7 w-7 rounded" src="assets/images/habitacion.png" alt="Icono de hotel" style="filter: brightness(0) invert(1);"/>
     </sidebar-item>
-    <sidebar-item title="Servicios" routerLink="/admin/servicios">
-      <img class="mr-4 h-7 w-7 rounded" src="assets/images/piscina.png" alt="Icono de hotel"  style="filter: brightness(0) invert(1);"/>
+
+    <sidebar-item *ngIf="usuarioAutenticado" title="Huéspedes" routerLink="/admin/huespedes">
+      <img class="mr-4 h-7 w-7 rounded" src="assets/images/huesped.png" alt="Icono de hotel" style="filter: brightness(0) invert(1);"/>
+    </sidebar-item>
+
+    <sidebar-item *ngIf="usuarioAutenticado" title="Servicios" routerLink="/admin/servicios">
+      <img class="mr-4 h-7 w-7 rounded" src="assets/images/piscina.png" alt="Icono de hotel" style="filter: brightness(0) invert(1);"/>
+    </sidebar-item>
+
+    <!-- Si el usuario NO está autenticado, se muestran los candados -->
+    <sidebar-item *ngIf="!usuarioAutenticado" title="Hoteles">
+      <img class="mr-4 h-7 w-7 rounded" src="assets/images/candado.png" alt="Bloqueado" style="filter: brightness(0) invert(1);"/>
+    </sidebar-item>
+
+    <sidebar-item *ngIf="!usuarioAutenticado" title="Habitaciones">
+      <img class="mr-4 h-7 w-7 rounded" src="assets/images/candado.png" alt="Bloqueado" style="filter: brightness(0) invert(1);"/>
+    </sidebar-item>
+
+    <sidebar-item *ngIf="!usuarioAutenticado" title="Huéspedes">
+      <img class="mr-4 h-7 w-7 rounded" src="assets/images/candado.png" alt="Bloqueado" style="filter: brightness(0) invert(1);"/>
+    </sidebar-item>
+
+    <sidebar-item *ngIf="!usuarioAutenticado" title="Servicios">
+      <img class="mr-4 h-7 w-7 rounded" src="assets/images/candado.png" alt="Bloqueado" style="filter: brightness(0) invert(1);"/>
     </sidebar-item>
   </sidebar-item-section>
-
 </div>
